@@ -17,4 +17,34 @@ export function generateWords(){
     
 }
 
+export function validation(startWord:string, endWord:string, inputValues:string[]) {
+    const inputField = document.getElementById("intermediate-word") as HTMLInputElement;
+    
+    inputField.addEventListener("change",()=>{
+        const input = inputField.value;
+        if (input.length < 3 || input.includes(" ")) {
+            alert("Érvénytelen szó! Csak 3 betűs szavakat adj meg!");
+            inputField.value = "";
+            inputField.focus();
+            
+            return;
+        }
+        else if (input === endWord) {
+            inputField.disabled = true;
+            alert("Gratulálok, elérted a célszót!");
+        }
+        else{
+            inputField.value = "";
+            inputField.focus();
+            inputValues.push(input);
+            startWord = input;
+        }
+        
+        
+        
+    })
+}
 
+export function ValidateIfcorrect(){
+    const inputField = document.getElementById("intermediate-word") as HTMLInputElement;
+}
