@@ -8,30 +8,13 @@ function getRandomIndex(max: number): number {
     return Math.floor(Math.random() * max);
 }
 
-function generateWords(){
+export function generateWords(){
     const startIndex = getRandomIndex(words.length);
     const endIndex = getRandomIndex(words.length);
 
     startWord = words[startIndex];
     endWord = words[endIndex];
+    
 }
 
 
-export function validation() {
-    const inputField = document.getElementById("intermediate-word") as HTMLInputElement;
-    const input = inputField.value;
-    if (input.length !== 3 || input.includes(" ")) {
-        alert("Érvénytelen szó! Csak 3 betűs szavakat adj meg!");
-        inputField.value = "";
-        inputField.focus();
-        return;
-    }
-    
-    inputValues.push(input);
-    startWord = input;
-    
-    if (input === endWord) {
-        inputField.disabled = true;
-        alert("Gratulálok, elérted a célszót!");
-    }
-}
